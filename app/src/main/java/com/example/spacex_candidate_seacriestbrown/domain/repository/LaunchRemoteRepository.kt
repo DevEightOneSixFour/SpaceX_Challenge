@@ -8,7 +8,8 @@ interface LaunchRemoteRepository {
     suspend fun fetchLaunches(): ApiState
 }
 
-class LaunchRepositoryImpl @Inject constructor(private val service: ApiService) : LaunchRemoteRepository {
+class LaunchRemoteRepositoryImpl @Inject constructor(private val service: ApiService) :
+    LaunchRemoteRepository {
     override suspend fun fetchLaunches(): ApiState {
         val apiState: ApiState = try {
             val response = service.fetchLaunches()
