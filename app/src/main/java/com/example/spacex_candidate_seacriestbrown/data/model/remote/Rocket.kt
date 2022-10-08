@@ -48,8 +48,8 @@ data class Payloads(
     @SerializedName("nationality") val nationality: String? = null,
     @SerializedName("manufacturer") val manufacturer: String? = null,
     @SerializedName("payload_type") val payloadType: String? = null,
-    @SerializedName("payload_mass_kg") val payloadMassKg: Int? = null,
-    @SerializedName("payload_mass_lbs") val payloadMassLbs: Int? = null,
+    @SerializedName("payload_mass_kg") val payloadMassKg: Double? = null,
+    @SerializedName("payload_mass_lbs") val payloadMassLbs: Double? = null,
     @SerializedName("orbit") val orbit: String? = null,
     @SerializedName("orbit_params") val orbitParams: OrbitParams? = null
 )
@@ -60,9 +60,9 @@ data class OrbitParams(
     @SerializedName("longitude") val longitude: String? = null,
     @SerializedName("semi_major_axis_km") val semiMajorAxisKm: String? = null,
     @SerializedName("eccentricity") val eccentricity: String? = null,
-    @SerializedName("periapsis_km") val periapsisKm: Int? = null,
-    @SerializedName("apoapsis_km") val apoapsisKm: Int? = null,
-    @SerializedName("inclination_deg") val inclinationDeg: Int? = null,
+    @SerializedName("periapsis_km") val periapsisKm: Double? = null,
+    @SerializedName("apoapsis_km") val apoapsisKm: Double? = null,
+    @SerializedName("inclination_deg") val inclinationDeg: Double? = null,
     @SerializedName("period_min") val periodMin: String? = null,
     @SerializedName("lifespan_years") val lifespanYears: String? = null,
     @SerializedName("epoch") val epoch: String? = null,

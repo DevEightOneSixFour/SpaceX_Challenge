@@ -1,11 +1,15 @@
 package com.example.spacex_candidate_seacriestbrown.data.model.local
 
+import android.os.Parcelable
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.example.spacex_candidate_seacriestbrown.data.model.remote.LaunchResponse
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "launches_table")
 data class EntityLaunchData(
-    val flightNumber: Int? = null,
+    @PrimaryKey val flightNumber: Int? = null,
     val missionName: String? = null,
     val missionId: List<String>? = null,
     val launchYear: String? = null,
@@ -16,8 +20,8 @@ data class EntityLaunchData(
     val articleLink: String? = null,
     val videoLink: String? = null,
     val details: String? = null,
-    val flickerImages: List<String>? = null,
-)
+    val flickrImages: List<String>? = null,
+): Parcelable
 
 fun List<LaunchResponse>.toLaunchUIData(): List<EntityLaunchData> =
     this.map {
@@ -33,7 +37,7 @@ fun List<LaunchResponse>.toLaunchUIData(): List<EntityLaunchData> =
             articleLink = it.links?.articleLink,
             videoLink = it.links?.videoLink,
             details = it.details,
-            flickerImages = it.links?.flickrImages ?: emptyList()
+            flickrImages = it.links?.flickrImages ?: emptyList()
         )
     }
 

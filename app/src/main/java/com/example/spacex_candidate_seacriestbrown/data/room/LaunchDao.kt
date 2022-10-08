@@ -9,7 +9,7 @@ import com.example.spacex_candidate_seacriestbrown.data.model.local.EntityLaunch
 @Dao
 interface LaunchDao {
     @Query("SELECT * FROM launches_table ORDER BY flightNumber ASC")
-    fun getAllLaunches(): List<EntityLaunchData>
+    suspend fun getAllLaunches(): List<EntityLaunchData>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(data: List<EntityLaunchData>)

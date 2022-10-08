@@ -6,7 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="12dp"
     app:cardBackgroundColor="@color/purple_200"
-    android:layout_margin="8dp">
+    android:layout_margin="8dp"
+    android:elevation="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,27 +18,62 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+            tools:text="Mission Name"
+            app:layout_constraintVertical_chainStyle="spread"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/gl_left_vertical"/>
         <TextView
             android:id="@+id/tv_rocket_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            tools:text="Rocket Name"
+            app:layout_constraintVertical_chainStyle="spread"
             app:layout_constraintTop_toBottomOf="@id/tv_mission_name"
-            app:layout_constraintStart_toStartOf="@id/tv_mission_name"/>
+            app:layout_constraintStart_toStartOf="@id/tv_mission_name"
+            app:layout_constraintBottom_toTopOf="@id/tv_launch_name"/>
         <TextView
             android:id="@+id/tv_launch_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            tools:text="Launch Name"
+            app:layout_constraintVertical_chainStyle="spread"
             app:layout_constraintTop_toBottomOf="@id/tv_rocket_name"
-            app:layout_constraintStart_toStartOf="@id/tv_rocket_name"/>
+            app:layout_constraintStart_toStartOf="@id/tv_rocket_name"
+            app:layout_constraintBottom_toTopOf="@id/tv_launch_date"/>
         <TextView
             android:id="@+id/tv_launch_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            tools:text="Launch Date"
+            app:layout_constraintVertical_chainStyle="spread"
             app:layout_constraintTop_toBottomOf="@id/tv_launch_name"
-            app:layout_constraintStart_toStartOf="@id/tv_launch_name"/>
+            app:layout_constraintStart_toStartOf="@id/tv_launch_name"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
+        <ImageView
+            android:id="@+id/iv_patch"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="@id/gl_left_vertical"
+            app:layout_constraintEnd_toEndOf="@id/gl_right_vertical"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_left_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".55"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_right_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".95"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -26,7 +26,7 @@ data class LaunchResponse(
     @SerializedName("static_fire_date_utc") val staticFireDateUtc: String? = null,
     @SerializedName("static_fire_date_unix") val staticFireDateUnix: Int? = null,
     @SerializedName("timeline") val timeline: Timeline? = null,
-    @SerializedName("crew") val crew: String? = null
+    @SerializedName("crew") val crew: List<Any>? = null
 )
 
 data class Telemetry(

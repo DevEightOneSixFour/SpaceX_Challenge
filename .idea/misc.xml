@@ -7,7 +7,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/launch_card_item.xml" value="0.11752786220871327" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/detail_flickr_item.xml" value="0.19444444444444445" />
+        <entry key="app/src/main/res/layout/fragment_launch_details.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_launch_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/launch_card_item.xml" value="0.335" />
       </map>
     </option>
   </component>
