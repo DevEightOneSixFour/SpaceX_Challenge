@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Spacex_Candidate_SeacriestBrown</string>
+    <string name="retry">Retry</string>
+    <string name="failed_call_text">Failed to get data</string>
 </resources>

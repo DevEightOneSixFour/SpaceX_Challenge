@@ -23,4 +23,8 @@ class SpaceViewModel @Inject constructor(
             _launches.postValue(useCase.fetchLaunches())
         }
     }
+
+    fun deleteAll() {
+        viewModelScope.launch { useCase.deleteAll() }
+    }
 }

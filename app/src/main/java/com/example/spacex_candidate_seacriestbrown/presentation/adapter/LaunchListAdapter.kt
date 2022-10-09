@@ -2,17 +2,15 @@ package com.example.spacex_candidate_seacriestbrown.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.example.spacex_candidate_seacriestbrown.R
 import com.example.spacex_candidate_seacriestbrown.data.model.local.EntityLaunchData
 import com.example.spacex_candidate_seacriestbrown.databinding.LaunchCardItemBinding
 import com.example.spacex_candidate_seacriestbrown.util.GlideDrawer
 
-class LaunchListAdapter(private val viewDetails: (EntityLaunchData) -> Unit)
+class LaunchListAdapter(private val viewDetails: (ImageView, EntityLaunchData) -> Unit)
     : ListAdapter<EntityLaunchData, LaunchListAdapter.LaunchCardViewHolder>(EntityDiffUtil()){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LaunchCardViewHolder =
@@ -38,9 +36,10 @@ class LaunchListAdapter(private val viewDetails: (EntityLaunchData) -> Unit)
                     tvRocketName.text = entityData.rocketName
 
                     ivPatch.apply {
-                        GlideDrawer.drawImage(this, entityData.patchImage)
+                        transitionName = entityData.patchImage
+                        GlideDrawer.drawImage(this, transitionName)
                         setOnClickListener {
-                            viewDetails(entityData)
+                            viewDetails(this, entityData)
                         }
                     }
                 }
@@ -51,7 +50,7 @@ class LaunchListAdapter(private val viewDetails: (EntityLaunchData) -> Unit)
         override fun areItemsTheSame(
             oldItem: EntityLaunchData,
             newItem: EntityLaunchData
-        ): Boolean = oldItem.missionId == newItem.missionId
+        ): Boolean = oldItem.flightNumber == newItem.flightNumber
 
         override fun areContentsTheSame(
             oldItem: EntityLaunchData,

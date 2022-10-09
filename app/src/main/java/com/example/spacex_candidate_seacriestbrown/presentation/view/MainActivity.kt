@@ -19,6 +19,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel.fetchLaunches()
+        // Network call only happens when first opening the app
+        if (viewModel.launches.value.isNullOrEmpty()) {
+            viewModel.fetchLaunches()
+        }
     }
 }
