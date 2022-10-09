@@ -2,13 +2,10 @@ package com.example.spacex_candidate_seacriestbrown.presentation.view
 
 import android.os.Bundle
 import android.transition.TransitionInflater
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.core.app.SharedElementCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.spacex_candidate_seacriestbrown.R
@@ -16,7 +13,6 @@ import com.example.spacex_candidate_seacriestbrown.data.model.local.EntityLaunch
 import com.example.spacex_candidate_seacriestbrown.databinding.FragmentLaunchListBinding
 import com.example.spacex_candidate_seacriestbrown.presentation.adapter.LaunchListAdapter
 import com.example.spacex_candidate_seacriestbrown.presentation.viewmodel.SpaceViewModel
-import com.example.spacex_candidate_seacriestbrown.util.TAG
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,7 +30,7 @@ class LaunchListFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentLaunchListBinding.inflate(layoutInflater)
 
         postponeEnterTransition()
@@ -61,7 +57,7 @@ class LaunchListFragment : Fragment() {
                         pbLoading.visibility = View.VISIBLE
                         tvErrorText.visibility = View.GONE
                         it.visibility = View.GONE
-                        viewModel.fetchLaunches()
+                        viewModel.fetchLaunches(requireContext())
                     }
                 }
             } else {

@@ -1,5 +1,6 @@
 package com.example.spacex_candidate_seacriestbrown.presentation.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,9 +19,9 @@ class SpaceViewModel @Inject constructor(
     private val _launches = MutableLiveData<List<EntityLaunchData>>()
     val launches: LiveData<List<EntityLaunchData>> get() = _launches
 
-    fun fetchLaunches() {
+    fun fetchLaunches(context: Context) {
         viewModelScope.launch {
-            _launches.postValue(useCase.fetchLaunches())
+            _launches.postValue(useCase.fetchLaunches(context))
         }
     }
 

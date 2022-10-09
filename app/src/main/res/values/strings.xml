@@ -1,5 +1,17 @@
 <resources>
     <string name="app_name">Spacex_Candidate_SeacriestBrown</string>
+
+<!-- Retry loading data -->
     <string name="retry">Retry</string>
     <string name="failed_call_text">Failed to get data</string>
+
+<!--  LaunchDetailsFragment -->
+    <string name="details_mission_name"><Data><![CDATA[<b>Mission Name</b><br/>]]></Data>%s</string>
+    <string name="details_rocket_name"><Data><![CDATA[<b>Rocket Name</b><br/>]]></Data>%s</string>
+    <string name="details_launch_site"><Data><![CDATA[<b>Launch Site</b><br/>]]></Data>%s</string>
+    <string name="details_launch_date"><Data><![CDATA[<b>Date of Launch</b><br/>]]></Data>%s</string>
+    <string name="details_article_link"><Data><![CDATA[<b>Article Link</b><br/>]]></Data>%s</string>
+    <string name="details_video_link"><Data><![CDATA[<b>Video Link</b><br/>]]></Data>%s</string>
+    <string name="details_flickr_title"><Data><![CDATA[<b>Flickr Images</b>]]></Data></string>
+
 </resources>

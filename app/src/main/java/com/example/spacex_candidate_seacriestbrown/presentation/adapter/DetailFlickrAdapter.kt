@@ -9,7 +9,7 @@ import com.example.spacex_candidate_seacriestbrown.util.GlideDrawer
 
 class DetailFlickrAdapter(
     private val imageList: MutableList<String> = mutableListOf(),
-    private val closeUp: (ImageView) -> Unit
+    private val moveToPager: (ImageView) -> Unit
 ) : RecyclerView.Adapter<DetailFlickrAdapter.FlickrViewHolder>() {
 
     fun updateList(newList: List<String>) {
@@ -23,7 +23,7 @@ class DetailFlickrAdapter(
         fun onBind(link: String) {
             binding.ivFlickrImage.apply {
                 GlideDrawer.drawImage(this, link)
-                setOnClickListener { closeUp(this) }
+                setOnClickListener { moveToPager(this) }
             }
         }
     }

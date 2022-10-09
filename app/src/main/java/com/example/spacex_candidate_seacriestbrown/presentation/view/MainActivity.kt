@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         // Network call only happens when first opening the app
         if (viewModel.launches.value.isNullOrEmpty()) {
-            viewModel.fetchLaunches()
+            viewModel.fetchLaunches(this)
         }
     }
 }
