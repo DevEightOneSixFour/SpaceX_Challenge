@@ -1,20 +1,27 @@
 package com.example.spacex_candidate_seacriestbrown.presentation.view
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.text.Html
+import android.text.SpannableString
 import android.text.Spanned
+import android.text.TextPaint
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.example.spacex_candidate_seacriestbrown.R
@@ -58,8 +65,8 @@ class LaunchDetailsFragment : Fragment() {
     private fun renderPage() {
         binding.apply {
             ivDetailPatch.apply {
-                transitionName = entityLaunchData.patchImage
-                handleEnterTransitionAfterLoading(transitionName, this)
+                transitionName = entityLaunchData.patchImage + entityLaunchData.flightNumber
+                handleEnterTransitionAfterLoading(entityLaunchData.patchImage.toString(), this)
             }
 
             tvDetailMissionName.text = Html.fromHtml(
@@ -86,18 +93,8 @@ class LaunchDetailsFragment : Fragment() {
                     entityLaunchData.launchDate
                 ), 0
             )
-            tvDetailArticle.text = Html.fromHtml(
-                resources.getString(
-                    R.string.details_article_link,
-                    entityLaunchData.articleLink
-                ), 0
-            )
-            tvDetailVideo.text = Html.fromHtml(
-                resources.getString(
-                    R.string.details_video_link,
-                    entityLaunchData.videoLink
-                ), 0
-            )
+
+            setClickableLinks()
 
             rvFlickrImages.apply {
                 if (!entityLaunchData.flickrImages.isNullOrEmpty()) {
@@ -119,9 +116,61 @@ class LaunchDetailsFragment : Fragment() {
         Toast.makeText(context, "ViewPager of images here", Toast.LENGTH_SHORT).show()
     }
 
+    private fun setClickableLinks() {
+        if (!entityLaunchData.articleLink.isNullOrBlank()) {
+            val articleSS = SpannableString(resources.getString(R.string.details_article_link))
+            val articleLink = object : ClickableSpan() {
+                override fun updateDrawState(ds: TextPaint) {
+                    ds.color = ResourcesCompat.getColor(resources, R.color.purple_200, null)
+                    ds.isUnderlineText = true
+                }
+                override fun onClick(p0: View) {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(entityLaunchData.articleLink))
+                    startActivity(intent)
+                }
+            }
+            articleSS.setSpan(
+                articleLink,
+                0,
+                articleSS.length,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            binding.tvDetailArticle.apply {
+                text = articleSS
+                movementMethod = LinkMovementMethod()
+            }
+        }
+
+        if (!entityLaunchData.videoLink.isNullOrBlank()) {
+            val videoSS = SpannableString(resources.getString(R.string.details_video_link))
+            val videoLink = object : ClickableSpan() {
+                override fun updateDrawState(ds: TextPaint) {
+                    ds.color = ResourcesCompat.getColor(resources, R.color.purple_200, null)
+                    ds.isUnderlineText = true
+                }
+                override fun onClick(p0: View) {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(entityLaunchData.videoLink))
+                    startActivity(intent)
+                }
+            }
+            videoSS.setSpan(
+                videoLink,
+                0,
+                videoSS.length,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            binding.tvDetailVideo.apply {
+                text = videoSS
+                movementMethod = LinkMovementMethod()
+            }
+        }
+    }
+
     private fun handleEnterTransitionAfterLoading(imageAddress: String, imageView: ImageView) {
         Glide.with(this)
             .load(imageAddress)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .error(R.drawable.spacex_logo2)
             .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
                     e: GlideException?,

@@ -36,8 +36,8 @@ class LaunchListAdapter(private val viewDetails: (ImageView, EntityLaunchData) -
                     tvRocketName.text = entityData.rocketName
 
                     ivPatch.apply {
-                        transitionName = entityData.patchImage
-                        GlideDrawer.drawImage(this, transitionName)
+                        transitionName = entityData.patchImage + entityData.flightNumber
+                        GlideDrawer.drawImage(this, entityData.patchImage)
                         setOnClickListener {
                             viewDetails(this, entityData)
                         }

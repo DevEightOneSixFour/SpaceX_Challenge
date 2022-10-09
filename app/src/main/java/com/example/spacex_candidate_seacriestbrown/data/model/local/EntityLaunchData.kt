@@ -5,6 +5,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.spacex_candidate_seacriestbrown.data.model.remote.LaunchResponse
 import kotlinx.parcelize.Parcelize
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 @Parcelize
 @Entity(tableName = "launches_table")
@@ -23,8 +26,8 @@ data class EntityLaunchData(
     val flickrImages: List<String>? = null,
 ): Parcelable
 
-fun List<LaunchResponse>.toLaunchUIData(): List<EntityLaunchData> =
-    this.map {
+fun List<LaunchResponse>.toLaunchUIData(): List<EntityLaunchData> {
+    val newList = this.map {
         EntityLaunchData(
             flightNumber = it.flightNumber,
             missionName = it.missionName,
@@ -32,12 +35,29 @@ fun List<LaunchResponse>.toLaunchUIData(): List<EntityLaunchData> =
             launchYear = it.launchYear,
             rocketName = it.rocket?.rocketName,
             launchSiteName = it.launchSite?.siteName,
-            launchDate = it.launchDateUtc,
+            launchDate = utcToDateTime(it.launchDateUtc),
             patchImage = it.links?.missionPatch,
             articleLink = it.links?.articleLink,
             videoLink = it.links?.videoLink,
             details = it.details,
             flickrImages = it.links?.flickrImages ?: emptyList()
         )
+    }.sortedByDescending {
+        LocalDate.parse(
+            it.launchDate,
+            DateTimeFormatter.ofPattern("MM-dd-yyy", Locale.ENGLISH)
+        )
     }
 
+    return newList
+}
+
+fun utcToDateTime(givenDate: String?): String {
+    if (givenDate == null) return "No date given"
+
+    val inputFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH)
+    val outputFormat = DateTimeFormatter.ofPattern("MM-dd-yyy", Locale.ENGLISH)
+    val date = LocalDate.parse(givenDate, inputFormat)
+
+    return  outputFormat.format(date)
+}

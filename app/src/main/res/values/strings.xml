@@ -7,11 +7,12 @@
 
 <!--  LaunchDetailsFragment -->
     <string name="details_mission_name"><Data><![CDATA[<b>Mission Name</b><br/>]]></Data>%s</string>
+    <string name="details_details"><Data><![CDATA[<b>Details</b><br/>]]></Data>%s</string>
     <string name="details_rocket_name"><Data><![CDATA[<b>Rocket Name</b><br/>]]></Data>%s</string>
     <string name="details_launch_site"><Data><![CDATA[<b>Launch Site</b><br/>]]></Data>%s</string>
     <string name="details_launch_date"><Data><![CDATA[<b>Date of Launch</b><br/>]]></Data>%s</string>
-    <string name="details_article_link"><Data><![CDATA[<b>Article Link</b><br/>]]></Data>%s</string>
-    <string name="details_video_link"><Data><![CDATA[<b>Video Link</b><br/>]]></Data>%s</string>
+    <string name="details_article_link">Article Link</string>
+    <string name="details_video_link">Video Link</string>
     <string name="details_flickr_title"><Data><![CDATA[<b>Flickr Images</b>]]></Data></string>
 
 </resources>
