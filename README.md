@@ -1,6 +1,6 @@
 # SpaceX_Challenge
 
-## Hello
+## Introduction
 My name is Seacriest Brown and this is my submission for the Senior Android position with Global Payments
 Tech Stack
 - MVVM with Clean Code Architecture  
@@ -9,6 +9,7 @@ Tech Stack
 - Room
 - Hilt
 - Glide
+- Shared Element Transitions 
 
 
 ## Challenge Parameters
