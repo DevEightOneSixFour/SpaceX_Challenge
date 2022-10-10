@@ -1,6 +1,17 @@
 # SpaceX_Challenge
 
+## Hello
+My name is Seacriest Brown and this is my submission for the Senior Android position with Global Payments
+Tech Stack
+- MVVM with Clean Code Architecture  
+- RecyclerView/ListAdapter
+- Retrofit with OkHTTP
+- Room
+- Hilt
+- Glide
 
+
+## Challenge Parameters
 Create an application that queries the SpaceX Data API (https://api.spacexdata.com/v3/launches) to list all historical Launches and display extensive Launch details to the user.
 
 Summary details displayed in the list should include:
