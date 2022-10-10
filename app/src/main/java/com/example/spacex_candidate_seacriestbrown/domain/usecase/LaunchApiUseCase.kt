@@ -18,22 +18,20 @@ class LaunchApiUseCase @Inject constructor(
      * If so, make the call to retrieve data.
      * If not or there is an error, pull from the database
      */
-    suspend fun fetchLaunches(context: Context): List<EntityLaunchData> {
-        if (NetworkUtil.isNetworkConnected(context)) {
-            return when (val state = remoteRepository.fetchLaunches()) {
-                is ApiState.Success -> {
-                    val cachingData = state.response.toLaunchUIData()
-                    localRepository.insertLocalLaunchData(cachingData)
-                    cachingData
-                }
-                is ApiState.Error -> {
-                    localRepository.getLocalLaunchData()
-                }
+    suspend fun fetchLaunches(): List<EntityLaunchData> {
+        return when (val state = remoteRepository.fetchLaunches()) {
+            is ApiState.Success -> {
+                val cachingData = state.response.toLaunchUIData()
+                localRepository.insertLocalLaunchData(cachingData)
+                cachingData
+            }
+            is ApiState.Error -> {
+                fetchFromLocal()
             }
         }
-
-       return localRepository.getLocalLaunchData()
     }
+
+    suspend fun fetchFromLocal(): List<EntityLaunchData> = localRepository.getLocalLaunchData()
 
     suspend fun deleteAll() {
         localRepository.deleteAll()

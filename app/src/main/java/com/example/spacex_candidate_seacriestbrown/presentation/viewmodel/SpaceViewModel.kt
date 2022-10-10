@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.spacex_candidate_seacriestbrown.data.model.local.EntityLaunchData
 import com.example.spacex_candidate_seacriestbrown.domain.usecase.LaunchApiUseCase
+import com.example.spacex_candidate_seacriestbrown.util.NetworkUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,7 +22,11 @@ class SpaceViewModel @Inject constructor(
 
     fun fetchLaunches(context: Context) {
         viewModelScope.launch {
-            _launches.postValue(useCase.fetchLaunches(context))
+            if (NetworkUtil.isNetworkConnected(context)) {
+                _launches.postValue(useCase.fetchLaunches())
+            } else {
+                _launches.postValue(useCase.fetchFromLocal())
+            }
         }
     }
 
