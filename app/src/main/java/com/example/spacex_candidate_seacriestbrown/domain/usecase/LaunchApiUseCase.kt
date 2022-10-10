@@ -1,7 +1,6 @@
 package com.example.spacex_candidate_seacriestbrown.domain.usecase
 
 import android.content.Context
-import android.util.Log
 import com.example.spacex_candidate_seacriestbrown.data.api.ApiState
 import com.example.spacex_candidate_seacriestbrown.data.model.local.EntityLaunchData
 import com.example.spacex_candidate_seacriestbrown.data.model.local.toLaunchUIData
@@ -25,7 +24,6 @@ class LaunchApiUseCase @Inject constructor(
                 is ApiState.Success -> {
                     val cachingData = state.response.toLaunchUIData()
                     localRepository.insertLocalLaunchData(cachingData)
-                    Log.d("*****", "cached: ${localRepository.getLocalLaunchData()}")
                     cachingData
                 }
                 is ApiState.Error -> {

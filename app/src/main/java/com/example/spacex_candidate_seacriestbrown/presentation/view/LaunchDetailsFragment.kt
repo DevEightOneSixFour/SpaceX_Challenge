@@ -69,6 +69,7 @@ class LaunchDetailsFragment : Fragment() {
                 handleEnterTransitionAfterLoading(entityLaunchData.patchImage.toString(), this)
             }
 
+            tvDetailDetails.text = entityLaunchData.details
             tvDetailMissionName.text = Html.fromHtml(
                 resources.getString(
                     R.string.details_mission_name,
