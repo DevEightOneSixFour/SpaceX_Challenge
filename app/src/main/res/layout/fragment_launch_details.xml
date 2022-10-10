@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,74 +30,92 @@
 
             <TextView
                 android:id="@+id/tv_detail_details"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
                 android:textAlignment="center"
+                android:autoSizeTextType="none"
+                android:autoSizeMinTextSize="18sp"
+                android:autoSizeMaxTextSize="94sp"
+                android:autoSizeStepGranularity="2sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintBottom_toTopOf="@id/tv_detail_mission_name"
                 tools:text="Details about the launch" />
 
             <TextView
                 android:id="@+id/tv_detail_mission_name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
+                android:autoSizeTextType="none"
+                android:autoSizeMinTextSize="22sp"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeStepGranularity="2sp"
                 app:layout_constraintBottom_toTopOf="@id/tv_detail_rocket"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_detail_details"
-                app:layout_constraintVertical_chainStyle="packed"
                 tools:text="Mission Name" />
 
             <TextView
                 android:id="@+id/tv_detail_rocket"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
+                android:autoSizeTextType="none"
+                android:autoSizeMinTextSize="22sp"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeStepGranularity="2sp"
                 app:layout_constraintBottom_toTopOf="@id/tv_detail_site"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_detail_mission_name"
-                app:layout_constraintVertical_chainStyle="packed"
                 tools:text="Rocket Name" />
 
             <TextView
                 android:id="@+id/tv_detail_site"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
+                android:autoSizeTextType="none"
+                android:autoSizeMinTextSize="22sp"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeStepGranularity="2sp"
                 app:layout_constraintBottom_toTopOf="@id/tv_detail_date"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_detail_rocket"
-                app:layout_constraintVertical_chainStyle="packed"
                 tools:text="LaunchSite" />
 
             <TextView
                 android:id="@+id/tv_detail_date"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
+                android:autoSizeTextType="none"
+                android:autoSizeMinTextSize="22sp"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeStepGranularity="2sp"
                 app:layout_constraintBottom_toTopOf="@id/tv_detail_article"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_detail_site"
-                app:layout_constraintVertical_chainStyle="packed"
                 tools:text="Rocket Name" />
 
             <TextView
                 android:id="@+id/tv_detail_article"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:textAlignment="center"
+                android:autoSizeTextType="none"
+                android:autoSizeMinTextSize="22sp"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeStepGranularity="2sp"
                 app:layout_constraintBottom_toTopOf="@id/tv_detail_video"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_detail_date"
-                app:layout_constraintVertical_chainStyle="packed"
                 tools:text="Article Link" />
 
             <TextView
@@ -105,24 +123,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
+                android:autoSizeTextType="none"
+                android:autoSizeMinTextSize="22sp"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeStepGranularity="2sp"
                 app:layout_constraintBottom_toTopOf="@id/tv_flickr_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_detail_article"
-                app:layout_constraintVertical_chainStyle="packed"
                 tools:text="Video Link" />
 
             <TextView
                 android:id="@+id/tv_flickr_title"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:visibility="gone"
+                android:autoSizeTextType="none"
+                android:autoSizeMinTextSize="22sp"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeStepGranularity="2sp"
                 app:layout_constraintBottom_toTopOf="@id/rv_flickr_images"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_detail_video"
-                app:layout_constraintVertical_chainStyle="packed"
                 tools:text="Other Images" />
 
             <androidx.recyclerview.widget.RecyclerView

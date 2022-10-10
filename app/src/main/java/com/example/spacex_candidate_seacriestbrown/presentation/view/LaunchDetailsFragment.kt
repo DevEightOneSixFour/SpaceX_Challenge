@@ -69,7 +69,10 @@ class LaunchDetailsFragment : Fragment() {
                 handleEnterTransitionAfterLoading(entityLaunchData.patchImage.toString(), this)
             }
 
-            tvDetailDetails.text = entityLaunchData.details
+            if (!entityLaunchData.details.isNullOrEmpty()) {
+                tvDetailDetails.text = entityLaunchData.details
+                tvDetailDetails.visibility = View.VISIBLE
+            }
             tvDetailMissionName.text = Html.fromHtml(
                 resources.getString(
                     R.string.details_mission_name,
@@ -133,10 +136,11 @@ class LaunchDetailsFragment : Fragment() {
             articleSS.setSpan(
                 articleLink,
                 0,
-                articleSS.length,
+                articleSS.length - 1,
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
             )
             binding.tvDetailArticle.apply {
+                visibility = View.VISIBLE
                 text = articleSS
                 movementMethod = LinkMovementMethod()
             }
@@ -157,10 +161,11 @@ class LaunchDetailsFragment : Fragment() {
             videoSS.setSpan(
                 videoLink,
                 0,
-                videoSS.length,
+                videoSS.length - 1,
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
             )
             binding.tvDetailVideo.apply {
+                visibility = View.VISIBLE
                 text = videoSS
                 movementMethod = LinkMovementMethod()
             }

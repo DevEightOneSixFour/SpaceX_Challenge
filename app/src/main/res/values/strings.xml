@@ -11,8 +11,8 @@
     <string name="details_rocket_name"><Data><![CDATA[<b>Rocket Name</b><br/>]]></Data>%s</string>
     <string name="details_launch_site"><Data><![CDATA[<b>Launch Site</b><br/>]]></Data>%s</string>
     <string name="details_launch_date"><Data><![CDATA[<b>Date of Launch</b><br/>]]></Data>%s</string>
-    <string name="details_article_link">Article Link</string>
-    <string name="details_video_link">Video Link</string>
+    <string name="details_article_link">Article Link\u0020</string>
+    <string name="details_video_link">Video Link\u0020</string>
     <string name="details_flickr_title"><Data><![CDATA[<b>Flickr Images</b>]]></Data></string>
 
 </resources>
