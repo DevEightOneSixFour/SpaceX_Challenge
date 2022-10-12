@@ -2,7 +2,8 @@
 
 ## Introduction
 My name is Seacriest Brown and this is my submission for the Senior Android position with Global Payments
-Tech Stack
+
+#### Tech Stack
 - MVVM with Clean Code Architecture  
 - RecyclerView/ListAdapter
 - Retrofit with OkHTTP
